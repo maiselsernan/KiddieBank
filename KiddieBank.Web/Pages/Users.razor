@@ -1,8 +1,39 @@
 ﻿@page "/User"
-
+@using KiddieBank.Model.Models
+@using KiddieBank.Web.Services.Interfaces
+@inject IUserService _userService
 
 <h3>Users</h3>
-
+@if (_users == null)
+{
+    <div class="spinner"></div>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in _users)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
 @code {
+    private List<User> _users { get; set; }
 
+    protected override async Task OnInitializedAsync()
+    {
+        _users = (await _userService.GetUsersAsync()).ToList();
+    }
+  
 }
