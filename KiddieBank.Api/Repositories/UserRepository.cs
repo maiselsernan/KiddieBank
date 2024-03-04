@@ -20,10 +20,7 @@ namespace KiddieBank.Api.Repositories
         {
             return await _context.Users.FindAsync(id);
         }
-        //public IEnumerable<User> GetUsers()
-        //{
-        //    return _context.Users.ToList();
-        //}
+      
     }
 }
 
