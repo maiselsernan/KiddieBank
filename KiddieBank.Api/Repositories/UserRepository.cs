@@ -1,5 +1,6 @@
 ﻿using KiddieBank.Api.Repositories.Interfaces;
 using KiddieBank.Model.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace KiddieBank.Api.Repositories
 {
@@ -13,7 +14,7 @@ namespace KiddieBank.Api.Repositories
         }
         public async Task<IEnumerable<User>> GetUsersAsync()
         {
-            return await Task.FromResult(_context.Users.ToList());
+            return await _context.Users.ToListAsync();
         }
         public async Task<User> GetUserByIdAsync(int id)
         {
