@@ -28,12 +28,3 @@ else
         </TableBody>
     </Table>
 }
-@code {
-    private List<User> _users { get; set; }
-
-    protected override async Task OnInitializedAsync()
-    {
-        _users = (await _userService.GetUsersAsync()).ToList();
-    }
-  
-}
