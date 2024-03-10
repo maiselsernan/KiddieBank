@@ -21,8 +21,8 @@ namespace KiddieBank.Web
             builder.RootComponents.Add<HeadOutlet>("head::after");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-            builder.Services.AddHttpClient<IUserService, UserService>
-                (client => client.BaseAddress = _baseAddress);
+            builder.Services.AddHttpClient<IUserService, UserService> (client => client.BaseAddress = _baseAddress);
+            builder.Services.AddHttpClient<ITransactionService, TransactionService>(client => client.BaseAddress = _baseAddress);
             builder.Services.AddBlazorise(options =>
                 {
                     options.Immediate = true;

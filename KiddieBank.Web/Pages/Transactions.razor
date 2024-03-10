@@ -1,0 +1,46 @@
+﻿@page "/Transaction/{userId}"
+@using KiddieBank.Web.Services.Interfaces
+@inject ITransactionService _transactionService
+
+<h3> Transactions</h3>
+@if (_transactions == null)
+{
+    <div class="spinner"></div>
+}
+else
+{
+    <Table Striped>
+        <TableHeader>
+            <TableRow>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Date</TableHeaderCell>
+                <TableHeaderCell>Note</TableHeaderCell>
+            </TableRow>
+        </TableHeader>
+        <TableBody>
+            @foreach (var transaction in _transactions)
+            {
+                <TableRow>
+                    <TableRowCell>
+                        @if (@transaction.Type == 1)
+                        {
+                            @transaction.Amount
+
+                        }
+                        else
+                        {
+                          @(-1 * transaction.Amount)
+                        }
+                    </TableRowCell>
+                    <TableRowCell>@transaction.Date</TableRowCell>
+                    <TableRowCell>@transaction.Note</TableRowCell>
+                </TableRow>
+            }
+            <TableRow>
+                <TableRowCell> <h4>Total Amount: @_totalAmount</h4></TableRowCell>
+            </TableRow>
+
+        </TableBody>
+    </Table>
+}
+

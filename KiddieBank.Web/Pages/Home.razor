@@ -7,10 +7,15 @@
 
 <h1>Hello, world!</h1>
 <button @onclick="NavigateToUserPage">Go to User Page</button>
+<button @onclick="NavigateToTransactionsPage">Go to Transactions Page</button>
 Welcome to your new app.
 @code {
     private void NavigateToUserPage()
     {
         NavigationManager.NavigateTo("/User");
+    }
+    private void NavigateToTransactionsPage()
+    {
+        NavigationManager.NavigateTo("/Transaction/2");
     }
 }
