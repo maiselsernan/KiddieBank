@@ -1,5 +1,4 @@
-﻿using KiddieBank.Api.Repositories;
-using KiddieBank.Api.Repositories.Interfaces;
+﻿using KiddieBank.Api.Repositories.Interfaces;
 using KiddieBank.Model.Models;
 using Microsoft.AspNetCore.Mvc;
 
