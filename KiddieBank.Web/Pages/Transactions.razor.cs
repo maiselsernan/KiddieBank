@@ -1,4 +1,4 @@
-﻿using KiddieBank.Model.Models;
+﻿using KiddieBank.DTOs;
 using Microsoft.AspNetCore.Components;
 
 namespace KiddieBank.Web.Pages
@@ -8,7 +8,7 @@ namespace KiddieBank.Web.Pages
         [Parameter]
         public string UserId { get; set; }
 
-        private List<Transaction> _transactions { get; set; }
+        private List<TransactionDto> _transactions { get; set; }
         private int _totalAmount;
         protected override async Task OnInitializedAsync()
         {

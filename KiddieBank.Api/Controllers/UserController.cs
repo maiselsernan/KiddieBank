@@ -1,4 +1,5 @@
 ﻿using KiddieBank.Api.Repositories.Interfaces;
+using KiddieBank.DTOs;
 using KiddieBank.Model.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,24 +16,39 @@ namespace KiddieBank.Api.Controllers
             _userRepository = userRepository;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<UserDto>>> GetUsers()
         {
             var users = await _userRepository.GetUsersAsync();
-            return Ok(users);
+            var usersDto = new List<UserDto>();
+            foreach (var user in users)
+            {
+                usersDto.Add(new UserDto
+                {
+                    Id = user.Id,
+                    Name = user.Name,
+                    Role = user.Role
+                });
+            }
+            return Ok(usersDto);
         }
 
         // GET: api/user/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public async Task<ActionResult<UserDto>> GetUser(int id)
         {
             var user = await _userRepository.GetUserByIdAsync(id);
-
             if (user == null)
             {
                 return NotFound();
             }
-
-            return user;
+            var userDto = new UserDto
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Role = user.Role
+            };
+          
+            return userDto;
         }
     }
 }

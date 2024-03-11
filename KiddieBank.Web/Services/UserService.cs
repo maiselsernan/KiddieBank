@@ -1,4 +1,4 @@
-﻿using KiddieBank.Model.Models;
+﻿using KiddieBank.DTOs;
 using KiddieBank.Web.Services.Interfaces;
 using System.Net.Http.Json;
 
@@ -12,9 +12,9 @@ namespace KiddieBank.Web.Services
         {
             _httpClient = httpClient;
         }
-        public async Task<IEnumerable<User>> GetUsersAsync()
+        public async Task<IEnumerable<UserDto>> GetUsersAsync()
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<User>>("User/");
+            return await _httpClient.GetFromJsonAsync<IEnumerable<UserDto>>("User/");
 
         }
     }

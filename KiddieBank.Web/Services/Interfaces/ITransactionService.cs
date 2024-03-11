@@ -1,9 +1,9 @@
-﻿using KiddieBank.Model.Models;
+﻿using KiddieBank.DTOs;
 
 namespace KiddieBank.Web.Services.Interfaces
 {
     public interface ITransactionService
     {
-        Task<IEnumerable<Transaction>> GetTransactionsAsync(int userId);
+        Task<IEnumerable<TransactionDto>> GetTransactionsAsync(int userId);
     }
 }

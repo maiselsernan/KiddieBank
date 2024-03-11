@@ -1,4 +1,5 @@
 ﻿using KiddieBank.Api.Repositories.Interfaces;
+using KiddieBank.DTOs;
 using KiddieBank.Model.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,10 +17,22 @@ namespace KiddieBank.Api.Controllers
         }
         // GET: api/transactions/5
         [HttpGet("{userId}")]
-        public async Task<ActionResult<IEnumerable<Transaction>>> GetTransactions(int userId)
+        public async Task<ActionResult<IEnumerable<TransactionDto>>> GetTransactions(int userId)
         {
             var transactions = await _transactionRepository.GetTransactionsAsync(userId);
-            return Ok(transactions);
+            var transactionsDto = new List<TransactionDto>();
+            foreach (var transaction in transactions)
+            {
+                transactionsDto.Add(new TransactionDto
+                {
+                    Id = transaction.Id,
+                    Amount = transaction.Amount,
+                    Date = transaction.Date,
+                    UserId = transaction.UserId,
+                    Type = transaction.Type,
+                });
+            }
+            return Ok(transactionsDto);
         }
     }
 }

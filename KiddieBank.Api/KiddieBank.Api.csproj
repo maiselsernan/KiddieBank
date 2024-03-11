@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\KiddieBank.DTOs\KiddieBank.DTOs.csproj" />
     <ProjectReference Include="..\KiddieBank.Model\KiddieBank.Model.csproj" />
   </ItemGroup>
 

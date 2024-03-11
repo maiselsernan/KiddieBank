@@ -1,9 +1,9 @@
-﻿using KiddieBank.Model.Models;
+﻿using KiddieBank.DTOs;
 
 namespace KiddieBank.Web.Services.Interfaces
 {
     public interface IUserService
     {
-        Task<IEnumerable<User>> GetUsersAsync();
+        Task<IEnumerable<UserDto>> GetUsersAsync();
     }
 }
