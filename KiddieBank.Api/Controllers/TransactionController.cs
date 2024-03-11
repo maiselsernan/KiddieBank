@@ -5,9 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KiddieBank.Api.Controllers
 {
-    [Route(("api/[controller]"))]
-    [ApiController]
-    public class TransactionController : ControllerBase
+    public class TransactionController : BaseApiController
     {
         private readonly ITransactionRepository _transactionRepository;
 

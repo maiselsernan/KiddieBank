@@ -5,9 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KiddieBank.Api.Controllers
 {
-    [Route(("api/[controller]"))]
-    [ApiController]
-    public class UserController : ControllerBase
+    public class UserController : BaseApiController
     {
         private readonly  IUserRepository  _userRepository;
 
