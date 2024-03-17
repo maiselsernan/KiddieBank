@@ -1,6 +1,8 @@
 
+using KiddieBank.Api.Interfaces;
 using KiddieBank.Api.Repositories;
 using KiddieBank.Api.Repositories.Interfaces;
+using KiddieBank.Api.Services;
 using KiddieBank.Model.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +19,9 @@ namespace KiddieBank.Api
             builder.Services.AddControllers();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+            builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+            builder.Services.AddScoped<ITokenService, TokenService>();
+            
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
